@@ -1,0 +1,6 @@
+{
+  "name": "microservice-1",
+  "dependencies": {
+    "fastify": "^4.26.2"
+  }
+}

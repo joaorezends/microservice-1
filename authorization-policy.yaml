@@ -1,0 +1,20 @@
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: microservice-1-authorization-policy
+  namespace: mynamespace
+spec:
+  rules:
+    - to:
+        - operation:
+            methods:
+              - GET
+            paths:
+              - /
+      when:
+        - key: request.auth.claims[resource_access][microservice-1][roles]
+          values:
+            - GET:/
+  selector:
+    matchLabels:
+      app: microservice-1
